@@ -3,9 +3,9 @@ format.version = "1.1"
 
 [versions]
 kotlin-language = "1.9.10"
-binary-compatibility-validator = "0.2.4"
-kotest = "4.3.0"
-mockk = "1.10.0"
+binary-compatibility-validator = "0.13.2"
+kotest = "5.7.2"
+mockk = "1.13.7"
 
 [libraries]
 kotest-runner = { group = "io.kotest", name = "kotest-runner-junit5", version.ref = "kotest" }

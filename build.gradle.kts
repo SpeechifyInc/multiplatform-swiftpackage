@@ -10,24 +10,30 @@ plugins {
     `java-gradle-plugin`
     `maven-publish`
     signing
-    libs.plugins.binary
+    libs.plugins.binary.compatibility.validator
 }
 
-version = "2.0.3"
+version = Plugin.Config.version
 
 dependencies {
+    compileOnly(kotlin("gradle-plugin"))
     testImplementation(libs.kotest.runner)
     testImplementation(libs.kotest.assertions)
     testImplementation(libs.kotest.property)
     testImplementation(libs.mockk)
+    testImplementation(kotlin("gradle-plugin"))
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 
     withJavadocJar()
     withSourcesJar()
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 tasks.withType<Test> {
@@ -40,12 +46,9 @@ extensions.findByName("buildScan")?.withGroovyBuilder {
 }
 
 gradlePlugin {
-    plugins {
-        create("pluginMaven") {
-            id = "com.chromaticnoise.multiplatform-swiftpackage"
-            implementationClass =
-                "com.chromaticnoise.multiplatformswiftpackage.MultiplatformSwiftPackagePlugin"
-        }
+    plugins.create(Plugin.Config.name) {
+        id = Plugin.Config.id
+        implementationClass = Plugin.Config.implementationClass
     }
 }
 
