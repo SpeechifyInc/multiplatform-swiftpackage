@@ -6,7 +6,11 @@ import org.gradle.api.Project
 import java.io.ByteArrayOutputStream
 import java.io.File
 
-internal fun zipFileChecksum(project: Project, outputDirectory: OutputDirectory, zipFileName: ZipFileName): String {
+internal fun zipFileChecksum(
+    project: Project,
+    outputDirectory: OutputDirectory,
+    zipFileName: ZipFileName
+): String {
     val outputPath = outputDirectory.value
     return File(outputPath, zipFileName.nameWithExtension)
         .takeIf { it.exists() }

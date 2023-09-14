@@ -27,4 +27,8 @@ internal val TargetName.konanTarget: KonanTarget get() = when (this) {
     TargetName.TvOSarm64 -> KonanTarget.TVOS_ARM64
     TargetName.TvOSx64 -> KonanTarget.TVOS_X64
     TargetName.MacOSx64 -> KonanTarget.MACOS_X64
+    TargetName.IOSSimulatorArm64 -> KonanTarget.IOS_SIMULATOR_ARM64
+    TargetName.WatchOSSimulatorArm64 -> KonanTarget.WATCHOS_SIMULATOR_ARM64
+    TargetName.TvOSSimulatorArm64 -> KonanTarget.TVOS_SIMULATOR_ARM64
+    TargetName.MacOSArm64 -> KonanTarget.MACOS_ARM64
 }

@@ -15,7 +15,10 @@ internal fun Project.registerCreateSwiftPackageTask() {
 
         doLast {
             val configuration = getConfigurationOrThrow()
-            val packageFile = File(configuration.outputDirectory.value, SwiftPackageConfiguration.FILE_NAME).apply {
+            val packageFile = File(
+                configuration.outputDirectory.value,
+                SwiftPackageConfiguration.FILE_NAME
+            ).apply {
                 parentFile.mkdirs()
                 createNewFile()
             }
@@ -26,7 +29,11 @@ internal fun Project.registerCreateSwiftPackageTask() {
                 toolVersion = configuration.swiftToolsVersion,
                 platforms = platforms(configuration),
                 distributionMode = configuration.distributionMode,
-                zipChecksum = zipFileChecksum(project, configuration.outputDirectory, configuration.zipFileName),
+                zipChecksum = zipFileChecksum(
+                    project,
+                    configuration.outputDirectory,
+                    configuration.zipFileName
+                ),
                 zipFileName = configuration.zipFileName
             )
 
@@ -38,10 +45,11 @@ internal fun Project.registerCreateSwiftPackageTask() {
     }
 }
 
-private fun platforms(configuration: PluginConfiguration): String = configuration.targetPlatforms.flatMap { platform ->
-    configuration.appleTargets
-        .filter { appleTarget -> platform.targets.firstOrNull { it.konanTarget == appleTarget.nativeTarget.konanTarget } != null }
-        .mapNotNull { target -> target.nativeTarget.konanTarget.family.swiftPackagePlatformName }
-        .distinct()
-        .map { platformName -> ".$platformName(.v${platform.version.name})" }
-}.joinToString(",\n")
+private fun platforms(configuration: PluginConfiguration): String =
+    configuration.targetPlatforms.flatMap { platform ->
+        configuration.appleTargets
+            .filter { appleTarget -> platform.targets.firstOrNull { it.konanTarget == appleTarget.nativeTarget.konanTarget } != null }
+            .mapNotNull { target -> target.nativeTarget.konanTarget.family.swiftPackagePlatformName }
+            .distinct()
+            .map { platformName -> ".$platformName(.v${platform.version.name})" }
+    }.joinToString(",\n")

@@ -6,7 +6,7 @@ import org.gradle.api.tasks.bundling.Zip
 
 internal fun Project.registerCreateZipFileTask() {
     tasks.register("createZipFile", Zip::class.java) {
-        setGroup(null) // hide the task from the task list
+        group = "" // hide the task from the task list
         description = "Creates a ZIP file containing the XCFramework"
 
         dependsOn("createXCFramework")

@@ -6,13 +6,13 @@ import com.chromaticnoise.multiplatformswiftpackage.domain.DistributionURL
 /**
  * DSL to create instance of a [DistributionModeDSL].
  */
-public class DistributionModeDSL {
+class DistributionModeDSL {
     internal var distributionMode: DistributionMode = DistributionMode.Local
 
     /**
      * The XCFramework will be distributed via the local file system.
      */
-    public fun local() {
+    fun local() {
         distributionMode = DistributionMode.Local
     }
 
@@ -21,7 +21,7 @@ public class DistributionModeDSL {
      *
      * @param url where the ZIP file can be downloaded from. E.g. https://example.com/packages/
      */
-    public fun remote(url: String) {
+    fun remote(url: String) {
         distributionMode = DistributionMode.Remote(DistributionURL(url))
     }
 }
