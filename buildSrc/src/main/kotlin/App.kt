@@ -1,8 +1,8 @@
 object Plugin {
     object Config {
-        const val id = "com.jorfao.multiplatform-swiftpackage"
-        const val name = "kmpSwiftPackage"
-        const val implementationClass = "com.chromaticnoise.multiplatformswiftpackage.MultiplatformSwiftPackagePlugin"
+        const val id = "com.speechify.multiplatform-swiftpackage"
+        const val name = "multiplatform-swiftpackage"
+        const val implementationClass = "com.speechify.multiplatformswiftpackage.MultiplatformSwiftPackagePlugin"
         const val version = "2.0.4"
     }
 }
