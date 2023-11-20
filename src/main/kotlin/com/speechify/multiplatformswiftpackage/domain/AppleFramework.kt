@@ -22,7 +22,15 @@ internal fun AppleFramework.Companion.of(binary: NativeBinary?): AppleFramework?
     )
 }
 
-internal data class AppleFrameworkOutputFile(private val file: File) {
+internal fun AppleFramework.Companion.fromFatBinary(fatBinaryFile: File, baseName: String, linkTaskName: String): AppleFramework {
+    return AppleFramework(
+            AppleFrameworkOutputFile(fatBinaryFile),
+            AppleFrameworkName(baseName),
+            AppleFrameworkLinkTask(linkTaskName)
+    )
+}
+
+internal data class AppleFrameworkOutputFile(internal val file: File) {
     val path: String get() = file.path
 
     val parent: File get() = file.parentFile

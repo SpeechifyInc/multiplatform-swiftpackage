@@ -65,10 +65,9 @@ publishing {
             url = uri("https://maven.pkg.github.com/speechifyinc/multiplatform-swiftpackage")
 
             credentials {
-                // Using chin's username for now since it corresponds to the PAT secret
                 // TODO: find ways to manage this better
-                username = "wchinny"
-                password = (project.findProperty("githubPersonalAccessToken") ?: "dryrun") as String
+                username = System.getenv("PLATFORM_USERNAME")
+                password = System.getenv("PLATFORM_PAT")
             }
         }
     }

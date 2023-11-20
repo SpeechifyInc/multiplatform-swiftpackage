@@ -25,7 +25,8 @@ class TargetPlatformDsl {
         targetsInternal(
             listOf(
                 Either.Right(TargetName.IOSarm64),
-                Either.Right(TargetName.IOSSimulatorArm64)
+                Either.Right(TargetName.IOSSimulatorArm64),
+                Either.Right(TargetName.IOSx64)
             ),
             version
         )

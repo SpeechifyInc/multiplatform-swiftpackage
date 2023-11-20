@@ -30,4 +30,6 @@ internal val TargetName.konanTarget: KonanTarget get() = when (this) {
     TargetName.WatchOSSimulatorArm64 -> KonanTarget.WATCHOS_SIMULATOR_ARM64
     TargetName.TvOSSimulatorArm64 -> KonanTarget.TVOS_SIMULATOR_ARM64
     TargetName.MacOSArm64 -> KonanTarget.MACOS_ARM64
+    TargetName.IOSx64 -> KonanTarget.IOS_X64
+
 }

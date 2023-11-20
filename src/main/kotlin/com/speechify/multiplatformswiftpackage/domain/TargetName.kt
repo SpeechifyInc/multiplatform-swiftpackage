@@ -2,6 +2,7 @@ package com.speechify.multiplatformswiftpackage.domain
 
 internal enum class TargetName(val identifier: String) {
     IOSarm64("iosArm64"),
+    IOSx64("iosX64"),
     IOSSimulatorArm64("iosSimulatorArm64"),
     WatchOSarm32("watchosArm32"),
     WatchOSarm64("watchosArm64"),
